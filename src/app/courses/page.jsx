@@ -8,7 +8,7 @@ const CoursesPage = async () => {
     const courses = await res.json();
     return (
       <div>
-        <h2 className='text-center text-3xl font-bold'>All Courses</h2>
+        <h2 className='text-center text-3xl font-bold my-10'>All Courses</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {courses.map((course) => (
             <CourseCard key={course.id} course={course} />

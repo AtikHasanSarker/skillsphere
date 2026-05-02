@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaHeart } from "react-icons/fa6";
 const CourseCard = ({ course }) => {
   return (
-    <Card className="border rounded-xl">
+    <Card className="border rounded-xl hover:translate-y-2.5 transition-transform duration-300">
       <div className="relative w-full aspect-square">
         <Image
           src={course.image}
@@ -14,13 +14,16 @@ const CourseCard = ({ course }) => {
           className="object-cover rounded-xl"
         />
 
-        <Chip size="sm" className="absolute right-2 top-2">
+        <Chip
+          size="lg"
+          className={`absolute right-2 top-2 ${course.level === "Beginner" ? "bg-[#406AAF] text-white" : course.level === "Intermediate" ? "bg-[#831C91] text-white" : "bg-[#C44545] text-white"}`}
+        >
           {course.level}
         </Chip>
       </div>
 
       <div>
-        <h2 className="font-medium">{course.title}</h2>
+        <h2 className="font-semibold text-2xl">{course.title}</h2>
       </div>
 
       <div className="flex gap-5">
@@ -34,14 +37,12 @@ const CourseCard = ({ course }) => {
         <Separator orientation="vertical" />
 
         <div>
-          <p>{course.category}</p>
+          <p className="font-medium text-[#D552A3]">{course.category}</p>
         </div>
       </div>
 
-      <Link href={`/all-courses/${course.id}`}>
-        <Button variant="outline" className={"w-full"}>
-          Details
-        </Button>
+      <Link href={`/courses/${course.id}`}>
+        <Button className={"w-full bg-[#2e3c8f]"}>Details</Button>
       </Link>
     </Card>
   );

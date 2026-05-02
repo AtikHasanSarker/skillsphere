@@ -4,18 +4,35 @@ import { Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../../../public/logo.jpg";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname();
   const links = (
     <>
       <li>
-        <Link href={"/"}>Home</Link>
+        <Link
+          href={"/"}
+          className={`pb-2 font-semibold ${pathname === "/" ? "text-[#2e3c8f] border-b-2 border-[#2e3c8f]" : ""}`}
+        >
+          Home
+        </Link>
       </li>
       <li>
-        <Link href={"/courses"}>Courses</Link>
+        <Link
+          href={"/courses"}
+          className={`pb-2 font-semibold ${pathname === "/courses" ? "text-[#2e3c8f] border-b-2 border-[#2e3c8f]" : ""}`}
+        >
+          Courses
+        </Link>
       </li>
       <li>
-        <Link href={"/profile"}>My Profile</Link>
+        <Link
+          href={"/profile"}
+          className={`pb-2 font-semibold ${pathname === "/profile" ? "text-[#2e3c8f] border-b-2 border-[#2e3c8f]" : ""}`}
+        >
+          My Profile
+        </Link>
       </li>
     </>
   );
@@ -68,19 +85,16 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
         </div>
         <ul className="hidden items-center gap-4 md:flex">{links}</ul>
         <div className="flex gap-4">
-          <ul className="flex items-center gap-2 text-sm">
+          <ul className="flex items-center gap-2 text-lg bg-[#2e3c8f] text-white px-4 py-3 rounded-lg">
             <li>
               <Link href={"/auth/signin"}>
-                <Button className="bg-[#2e3c8f]" size="sm">
                   Login
-                </Button>
               </Link>
             </li>
+            <li>/</li>
             <li>
               <Link href={"/auth/signup"}>
-                <Button className="bg-[#831C91]" size="sm">
                   Register
-                </Button>
               </Link>
             </li>
           </ul>
