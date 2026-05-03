@@ -1,4 +1,3 @@
-
 import SearchBox from '@/components/SearchBox';
 import React from 'react';
 
@@ -7,6 +6,7 @@ const CoursesPage = async () => {
        "https://skillsphere-rho.vercel.app/data.json",
      );
     const courses = await res.json();
+    console.log(courses)
 
     return (
       <div className="max-w-6xl mx-auto px-6">

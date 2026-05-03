@@ -7,7 +7,7 @@ export default function Home() {
     <div>
       <Banner />
       <TopCourses />
-      <TopInstructor />
+      {/* <TopInstructor /> */}
     </div>
   );
 }
