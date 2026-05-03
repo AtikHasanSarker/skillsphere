@@ -6,6 +6,7 @@ import Link from "next/link";
 import logo from "../../../../public/logo.jpg";
 import { usePathname } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -44,6 +45,7 @@ const Navbar = () => {
 
   const handleSignOut = async () => {
     await authClient.signOut();
+    toast.warning("Logged out successfully");
   };
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
@@ -103,7 +105,7 @@ const Navbar = () => {
 
           {user && (
             <div className="flex gap-2 items-center">
-              <div>
+              <div className="hidden md:flex">
                 Hello, <span className="font-medium">{user.name}</span>
               </div>
               <Avatar>
@@ -114,7 +116,7 @@ const Navbar = () => {
                 className="bg-[#2e3c8f] hidden md:flex"
                 onClick={handleSignOut}
               >
-                Sign Out
+                Logout
               </Button>
             </div>
           )}
@@ -130,7 +132,7 @@ const Navbar = () => {
                 className="bg-[#2e3c8f]"
                 onClick={handleSignOut}
               >
-                Sign Out
+                Logout
               </Button>
             </li>
           </ul>
