@@ -5,7 +5,9 @@ import { BiBriefcaseAlt2 } from 'react-icons/bi';
 import { FaStar, FaUserGraduate } from 'react-icons/fa6';
 
 const TopInstructor = async() => {
-    const res = await fetch("http://localhost:3000/instructor.json");
+    const res = await fetch(
+      "https://skillsphere-rho.vercel.app/instructor.json",
+    );
     const instructors = await res.json();
 
     return (
