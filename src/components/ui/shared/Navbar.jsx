@@ -85,18 +85,10 @@ const [isMenuOpen, setIsMenuOpen] = useState(false);
         </div>
         <ul className="hidden items-center gap-4 md:flex">{links}</ul>
         <div className="flex gap-4">
-          <ul className="flex items-center gap-2 text-lg bg-[#2e3c8f] text-white px-4 py-3 rounded-lg">
+          <ul className="text-lg bg-[#2e3c8f] text-white px-4 py-3 rounded-lg">
             <li>
-              <Link href={"/auth/signin"}>
-                  Login
-              </Link>
-            </li>
-            <li>/</li>
-            <li>
-              <Link href={"/auth/signup"}>
-                  Register
-              </Link>
-            </li>
+              <Link href={"/auth/login"}>Login / Register</Link>
+            </li>   
           </ul>
         </div>
       </header>

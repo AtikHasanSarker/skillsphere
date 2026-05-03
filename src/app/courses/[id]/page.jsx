@@ -18,8 +18,8 @@ const CourseDetails = async ({ params }) => {
   }
 
   return (
-    <Card className="w-6xl mx-auto items-stretch md:flex-row my-10">
-      <div className="relative h-35 w-full shrink-0 overflow-hidden rounded-2xl md:h-80 md:w-120">
+    <Card className="w-6xl mx-auto items-stretch md:flex-row my-10 gap-5">
+      <div className="relative h-35 w-full shrink-0 overflow-hidden rounded-2xl md:h-100 md:w-120">
         <Image
           width={500}
           height={500}
@@ -41,7 +41,8 @@ const CourseDetails = async ({ params }) => {
         <Card.Content className="text-sm text-foreground/80">
           <div>
             <span className="text-sm font-medium text-foreground">
-              Category: {course.category}
+              Category:{" "}
+              <span className="text-[#2e3c8f]">{course.category}</span>
             </span>
           </div>
 
@@ -61,20 +62,21 @@ const CourseDetails = async ({ params }) => {
               </tr>
             </tbody>
           </table>
-          {/* <ul>
+          <p className="font-bold text-lg">Curriculum:</p>
+          <ul className="list-disc pl-10">
             {course.curriculum.map((item, index) => (
-              <li key={index} className="flex items-center gap-2">
-                <span className="text-sm text-foreground/80">{item}</span>
+              <li key={index} className="text-sm text-foreground/80">
+                {item}
               </li>
             ))}
-          </ul> */}
+          </ul>
         </Card.Content>
         <Separator orientation="horizontal" />
         <Card.Footer className="mt-auto flex w-full flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-6">
             <span className="text-sm font-medium text-foreground flex gap-1 items-center">
               Rating: <IoIosStar color="#f7d200" />
-              {course.rating}
+              <span className="text-[#f5c118]">{course.rating}</span>
             </span>
             <span className="text-sm font-medium text-foreground">
               Level:{" "}

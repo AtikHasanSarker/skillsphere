@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FaHeart } from "react-icons/fa6";
 const CourseCard = ({ course }) => {
   return (
-    <Card className="border rounded-xl hover:translate-y-2.5 transition-transform duration-300">
+    <Card className="border border-gray-300 shadow-lg rounded-xl hover:-translate-y-2.5 transition-transform duration-500">
       <div className="relative w-full aspect-square">
         <Image
           src={course.image}

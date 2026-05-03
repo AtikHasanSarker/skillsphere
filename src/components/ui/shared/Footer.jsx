@@ -34,8 +34,8 @@ const Footer = () => {
             </div>
 
             <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-400 max-w-xs">
-              Create production-ready AI visuals in seconds. Built for speed,
-              scale, and creativity.
+              Empowering you to master new skills and achieve your goals with
+              our comprehensive courses and expert instructors.
             </p>
           </div>
 
