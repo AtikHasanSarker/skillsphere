@@ -30,8 +30,8 @@ const CourseDetails = async ({ params }) => {
         />
       </div>
       <div className="flex flex-1 flex-col gap-3">
-        <Card.Header className="gap-1">
-          <Card.Title className="pr-8 text-3xl font-bold">
+        <Card.Header className="gap-2">
+          <Card.Title className="pr-8 text-3xl font-bold leading-snug">
             {course.title}
           </Card.Title>
           <Card.Description className="text-lg">
