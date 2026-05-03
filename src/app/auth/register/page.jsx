@@ -1,7 +1,6 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
-import google from "@/assets/images/google.png";
 import {
   Button,
   Card,
@@ -12,43 +11,45 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import Image from "next/image";
 import { redirect } from "next/navigation";
-import Link from "next/link";
-import { useFormStatus } from "react-dom";
 
-export default function LoginPage() {
-
+export default function SignUpPage() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const userData = Object.fromEntries(formData.entries()); 
+    const userData = Object.fromEntries(formData.entries());
+    console.log("User Data:", userData);
 
-    const { data, error } = await authClient.signIn.email({
+    const { data, error } = await authClient.signUp.email({
+      name: userData.name,
       email: userData.email,
       password: userData.password,
+      image: userData.image,
     });
+    console.log("Sign Up Data:", data, "Error:", error);
     if (data) {
       redirect("/");
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    const { data, error } = await authClient.signIn.social({
-      provider: "google",
-    });
-  };
-
-
   return (
     <div className="px-6">
       <Card className="border border-gray-300 mx-auto max-w-125 py-10 mt-5">
-        <h1 className="text-center text-2xl font-bold">Login Your Account</h1>
+        <h1 className="text-center text-2xl font-bold">Register</h1>
 
-        <Form
-          className="flex max-w-96 mx-auto flex-col gap-4"
-          onSubmit={onSubmit}
-        >
+        <Form className="flex max-w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
+          <TextField isRequired name="name" type="text">
+            <Label>Name</Label>
+            <Input placeholder="Enter your name" />
+            <FieldError />
+          </TextField>
+
+          <TextField isRequired name="image" type="text">
+            <Label>Image URL</Label>
+            <Input placeholder="Image URL" />
+            <FieldError />
+          </TextField>
+
           <TextField
             isRequired
             name="email"
@@ -96,30 +97,13 @@ export default function LoginPage() {
           <div className="flex gap-2">
             <Button className="bg-[#2e3c8f]" type="submit">
               <Check />
-              Login
+              Register
             </Button>
             <Button type="reset" variant="outline" className="text-[#2e3c8f]">
               Reset
             </Button>
           </div>
         </Form>
-
-        <div className="mt-5 text-center text-xs text-gray-500">
-          Do not have an account ?{" "}
-          <Link href="/auth/register" className="text-blue-500">
-            Register Now
-          </Link>
-        </div>
-
-        <div className="divider">OR</div>
-        <Button
-          className="w-full text-black"
-          variant="secondary"
-          onClick={handleGoogleSignIn}
-        >
-          <Image src={google} alt="Google Logo" width={20} height={20} />
-          Sign in with Google
-        </Button>
       </Card>
     </div>
   );
